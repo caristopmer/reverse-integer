@@ -18,6 +18,26 @@
 # @param {Integer} x
 # @return {Integer}
 
+input1 = 123
+output1 = 321
+
+input2 = -123
+output2 = -321
+
+input3 = 120
+output3 = 21
+
+
 def reverse(x)
-    
+  # convert int to array of characters
+  # Skip first character if it is "-"
+  # iterate through array backwards and build new string with reversed integer
+  # convert new string back into integer and return
+  integer_array = x.to_s.split('')
+  return (integer_array.shift + integer_array.reverse.join('')).to_i if integer_array.first == "-"
+  integer_array.reverse.join('').to_i
 end
+
+puts reverse(input1) == output1
+puts reverse(input2) == output2
+puts reverse(input3) == output3
