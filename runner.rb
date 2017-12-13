@@ -34,8 +34,12 @@ def reverse(x)
   # iterate through array backwards and build new string with reversed integer
   # convert new string back into integer and return
   integer_array = x.to_s.split('')
-  return (integer_array.shift + integer_array.reverse.join('')).to_i if integer_array.first == "-"
-  integer_array.reverse.join('').to_i
+  if integer_array.first == "-"
+    reversed_integer = (integer_array.shift + integer_array.reverse.join('')).to_i
+  else
+    reversed_integer = integer_array.reverse.join('').to_i
+  end
+  return reversed_integer.bit_length >= 32 ? 0 : reversed_integer
 end
 
 puts reverse(input1) == output1
